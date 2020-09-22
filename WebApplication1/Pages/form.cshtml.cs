@@ -42,7 +42,13 @@ namespace WebApplication1
         [Required(ErrorMessage = "您必須輸入身分證")]
         public string ID { get; set; }
         
-        public List<person> Person_List = new List<person>() { new person("a", "male", "A123456789"), new person("b", "female", "B123456789"), new person("c", "male", "C123456789"), new person("d", "female", "D123456789") };
+        public List<person> Person_List = new List<person>()
+        { 
+            new person("a", "male", "A123456789"), 
+            new person("b", "female", "B123456789"), 
+            new person("c", "male", "C123456789"), 
+            new person("d", "female", "D123456789") 
+        };
         public List<person> Personal = new List<person>();
         public void OnGet()
         {
