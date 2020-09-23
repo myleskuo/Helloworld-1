@@ -1,38 +1,24 @@
 ﻿@page
 @model formPageModel
 @{
-    ViewData["Title"] = "form";
+    ViewData["Title"] = "搜尋";
     var personList = Model.Person_List;
     if (Model.Personal.Count != 0)
     {
         personList = Model.Personal;
     }
+    //if(TempData["test"] != null)
+    //{
+    //    personList = TempData["test"] as List<Model.person>;
+    //}
 }
-
+<h5>@TempData["test"]</h5>
 <form method="post">
-    <div class="form-group">
-        <label asp-for="Name"></label>
-        <input type="text" class="form-control" asp-for="Name"/>
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label>性別</label>
-        <select class="form-control" asp-for="Sex" asp-items="@Html.GetEnumSelectList(typeof(sex))"></select>
-    </div>
-    <div class="form-group">
-        <label asp-for="ID"></label>
-        <input type="text" class="form-control" asp-for="ID"/>
-        <span asp-validation-for="ID" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-success" asp-page-handler="Form2">儲存</button>
-</form>
-
-<form method="post">
-    <div class="input-group mt-5 w-50">
+    <div class="input-group mb-3 w-50">
         <input type="text" class="form-control" asp-for="SearchName" />
         <div class="input-group-append">
-            <button type="submit" class="btn btn-outline-secondary" asp-page-handler="Form1">搜尋</button>
-            <button type="submit" class="btn btn-success" asp-page="form1">新增</button>
+            <button type="submit" class="btn btn-secondary" asp-page-handler="Search">搜尋</button>
+            <button type="submit" class="btn btn-success" asp-page-handler="New">新增</button>
         </div>
     </div>
 </form>
@@ -40,9 +26,10 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>姓名</th>
-                <th>性別</th>
-                <th>身分證</th>
+                <th width="25%">姓名</th>
+                <th width="25%">性別</th>
+                <th width="25%">身分證</th>
+                <th width="25%">編輯</th>
             </tr>
         </thead>
         <tbody>
@@ -52,6 +39,10 @@
                 <td>@person.name</td>
                 <td>@person.sex</td>
                 <td>@person.id</td>
+                <td>
+                    <button type="button" class="btn btn-info" asp-route-id="@person.index">修改</button>
+                    <button type="button" class="btn btn-danger" asp-route-id="@person.index">刪除</button>
+                </td>
             </tr>
             }
         </tbody>

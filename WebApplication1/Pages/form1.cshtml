@@ -1,4 +1,23 @@
 ﻿@page
-@model WebApplication1.Pages.form1Model
+@model form1PageModel
 @{
-}
+    ViewData["Title"] = "新增";
+} 
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input type="text" class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>性別</label>
+        <select class="form-control" asp-for="Sex" asp-items="@Html.GetEnumSelectList(typeof(sex))"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="ID"></label>
+        <input type="text" class="form-control" asp-for="ID" />
+        <span asp-validation-for="ID" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">儲存</button>
+</form>
