@@ -9,13 +9,6 @@ using WebApplication1.Model;
 
 namespace WebApplication1
 {
-    public enum sex
-    {
-        none,
-        male,
-        female
-    }
-
     public class formPageModel : PageModel
     {
         [BindProperty]
