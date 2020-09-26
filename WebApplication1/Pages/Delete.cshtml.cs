@@ -26,7 +26,7 @@ namespace WebApplication1.Pages
         public Guid Uid { get; set; }
         public void OnGet()
         {
-            ViewData["Title"] = "§R°£";
+            ViewData["Title"] = "Delete";
         }
         public IActionResult OnPostDelete()
         {

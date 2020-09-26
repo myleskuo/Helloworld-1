@@ -41,7 +41,7 @@ namespace WebApplication1
 
         public void OnGet()
         {
-            ViewData["Title"] = "·s¼W";
+            ViewData["Title"] = "Create";
         }
         public IActionResult OnPostSave()
         {

@@ -21,7 +21,7 @@ namespace WebApplication1
         public List<Person> Persons = new List<Person>();
         public void OnGet()
         {
-            ViewData["Title"] = "首頁";
+            ViewData["Title"] = "Courses 1";
 
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
             var config = builder.Build();
@@ -66,9 +66,8 @@ namespace WebApplication1
         }
         public void OnPostSearch()
         {
-            var builder = new ConfigurationBuilder()
-                  .SetBasePath(Directory.GetCurrentDirectory())
                   .AddJsonFile("appsettings.json");
+            var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
             var config = builder.Build();
             var connectionString = config.GetConnectionString("WebApplication1Context");
             Person person = new Person(Guid.Empty, String.Empty, String.Empty, String.Empty);

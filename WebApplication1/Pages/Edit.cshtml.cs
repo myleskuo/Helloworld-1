@@ -42,7 +42,7 @@ namespace WebApplication1.Pages
 
         public void OnGet()
         {
-            ViewData["Title"] = "н╫зя";
+            ViewData["Title"] = "Edit";
         }
         public IActionResult OnPostEdit()
         {
