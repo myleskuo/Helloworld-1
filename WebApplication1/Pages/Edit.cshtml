@@ -35,6 +35,6 @@
         <input type="text" class="form-control" asp-for="IdNumber" value="@HttpContext.Request.Query["idnum"]" />
         <span asp-validation-for="IdNumber" class="text-danger"></span>
     </div>
-    <a class="btn btn-secondary" asp-page="form">回上一頁</a>
-    <button type="submit" class="btn btn-success" asp-page-handler="Edit" asp-route-uid="@HttpContext.Request.Query["uid"]">完成</button>
+    <a class="btn btn-secondary" asp-page="form">返回</a>
+    <button type="submit" class="btn btn-success" asp-page-handler="Edit" asp-route-uid="@HttpContext.Request.Query["uid"]">儲存</button>
 </form>

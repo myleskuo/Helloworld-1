@@ -1,6 +1,7 @@
 ﻿@page
 @model WebApplication1.Pages.DeleteModel
 @{
+    var a = Model.Uid;
 }
 
 <form method="post">
@@ -16,6 +17,28 @@
         <label asp-for="IdNumber"></label>
         <input type="text" class="form-control" asp-for="IdNumber" readonly="readonly" value="@HttpContext.Request.Query["idnum"]"/>
     </div>
-    <a class="btn btn-secondary" asp-page="form">回上一頁</a>
-    <button type="submit" class="btn btn-danger" asp-page-handler="Delete" asp-route-uid="@HttpContext.Request.Query["uid"]">刪除</button>
+    <a class="btn btn-secondary" asp-page="form">返回</a>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete_Modal">刪除</button>
 </form>
+
+<div class="modal fade" id="delete_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">確認框</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                確認要刪除該筆資料？
+            </div>
+            <div class="modal-footer">
+                <form method="post">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                    <button type="submit" class="btn btn-primary" asp-page-handler="Delete" asp-route-uid="@HttpContext.Request.Query["uid"]">確認</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
