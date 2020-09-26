@@ -66,7 +66,6 @@ namespace WebApplication1
         }
         public void OnPostSearch()
         {
-                  .AddJsonFile("appsettings.json");
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
             var config = builder.Build();
             var connectionString = config.GetConnectionString("WebApplication1Context");
