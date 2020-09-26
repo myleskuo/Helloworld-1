@@ -1,0 +1,41 @@
+﻿@page
+@model WebApplication1.Pages.EditModel
+@{
+}
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+
+<h1>修改</h1>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input type="text" class="form-control" asp-for="Name" value="@HttpContext.Request.Query["name"]" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Sex"></label>
+        <select class="form-control" asp-for="Sex">
+            @foreach (var e in Enum.GetValues(typeof(sex)).Cast<int>())
+            {
+                if (Enum.GetName(typeof(sex), e) == HttpContext.Request.Query["sex"])
+                {
+                    <option value="@e.ToString()" selected>@Enum.GetName(typeof(sex), e)</option>
+                }
+                else
+                {
+                    <option value="@e.ToString()">@Enum.GetName(typeof(sex), e)</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="IdNumber"></label>
+        <input type="text" class="form-control" asp-for="IdNumber" value="@HttpContext.Request.Query["idnum"]" />
+        <span asp-validation-for="IdNumber" class="text-danger"></span>
+    </div>
+    <a class="btn btn-secondary" asp-page="form">回上一頁</a>
+    <button type="submit" class="btn btn-success" asp-page-handler="Edit" asp-route-uid="@HttpContext.Request.Query["uid"]">完成</button>
+</form>

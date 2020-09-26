@@ -1,25 +1,16 @@
 ﻿@page
 @model formPageModel
 @{
-    ViewData["Title"] = "搜尋";
-    var personList = Model.Person_List;
-    if (Model.Personal.Count != 0)
-    {
-        personList = Model.Personal;
-    }
-    //if(TempData["test"] != null)
-    //{
-    //    personList = TempData["test"] as List<Model.person>;
-    //}
+    var Persons = Model.Persons;
+    int i = 1;
 }
 
-<h5>@TempData["test"]</h5>
 <form method="post">
     <div class="input-group mb-3 w-50">
         <input type="text" class="form-control" asp-for="SearchName" />
         <div class="input-group-append">
             <button type="submit" class="btn btn-secondary" asp-page-handler="Search">搜尋</button>
-            <button type="submit" class="btn btn-success" asp-page-handler="New">新增</button>
+            <a class="btn btn-success" asp-page="Create">新增</a>
         </div>
     </div>
 </form>
@@ -27,24 +18,33 @@
     <table class="table table-striped">
         <thead>
             <tr>
+                <th width="5%">#</th>
                 <th width="25%">姓名</th>
-                <th width="25%">性別</th>
+                <th width="20%">性別</th>
                 <th width="35%">身分證</th>
                 <th width="15%">編輯</th>
             </tr>
         </thead>
         <tbody>
-            @foreach(var person in personList)
+            @foreach (var person in Persons)
             {
-            <tr>
-                <td>@person.name</td>
-                <td>@person.sex</td>
-                <td>@person.id</td>
-                <td>
-                    <button type="button" class="btn btn-info" asp-route-id="@person.index">修改</button>
-                    <button type="button" class="btn btn-danger" asp-route-id="@person.index">刪除</button>
-                </td>
-            </tr>
+                <tr>
+                    <td>@i</td>
+                    <td>@person.Name</td>
+                    <td>@person.Sex</td>
+                    <td>@person.IdNumber</td>
+                    <td class="text-nowrap">
+                        <a class="btn btn-info" asp-page="Edit" asp-route-name="@person.Name" asp-route-sex="@person.Sex" asp-route-idnum="@person.IdNumber" asp-route-uid="@person.UniqueId">修改</a>
+                        <a class="btn btn-danger" asp-page="Delete" asp-route-name="@person.Name" asp-route-sex="@person.Sex" asp-route-idnum="@person.IdNumber" asp-route-uid="@person.UniqueId">刪除</a>
+                    </td>
+                </tr>
+                i++;
+            }
+            @if (Persons.Count <= 0)
+            {
+                <tr>
+                    <td colspan="5" class="text-center">沒有相符的資料</td>
+                </tr>
             }
         </tbody>
     </table>

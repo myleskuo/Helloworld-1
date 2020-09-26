@@ -5,19 +5,19 @@ using System.Threading.Tasks;
 
 namespace WebApplication1.Model
 {
-    public class person
+    public class Person
     {
-        public int index { get; set; }
-        public string name { get; set; }
-        public string sex { get; set; }
-        public string id { get; set; }
+        public Guid UniqueId { get; set; }
+        public string Name { get; set; }
+        public string Sex { get; set; }
+        public string IdNumber { get; set; }
 
-        public person(int _index, string _name, string _sex, string _id)
+        public Person(Guid _UniqueId, string _Name, string _Sex, string _IdNumber)
         {
-            index = _index;
-            name = _name;
-            sex = _sex;
-            id = _id;
+            UniqueId = _UniqueId;
+            Name = _Name;
+            Sex = _Sex;
+            IdNumber = _IdNumber;
         }
     }
 }

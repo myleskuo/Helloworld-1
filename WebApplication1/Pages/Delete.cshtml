@@ -1,0 +1,21 @@
+﻿@page
+@model WebApplication1.Pages.DeleteModel
+@{
+}
+<h1>刪除</h1>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input type="text" class="form-control" asp-for="Name" readonly="readonly" value="@HttpContext.Request.Query["name"]"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="Sex"></label>
+        <input type="text" class="form-control" asp-for="Sex" readonly="readonly" value="@HttpContext.Request.Query["sex"]"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="IdNumber"></label>
+        <input type="text" class="form-control" asp-for="IdNumber" readonly="readonly" value="@HttpContext.Request.Query["idnum"]"/>
+    </div>
+    <a class="btn btn-secondary" asp-page="form">回上一頁</a>
+    <button type="submit" class="btn btn-danger" asp-page-handler="Delete" asp-route-uid="@HttpContext.Request.Query["uid"]">刪除</button>
+</form>
