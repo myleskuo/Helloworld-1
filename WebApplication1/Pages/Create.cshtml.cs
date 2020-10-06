@@ -85,7 +85,6 @@ namespace WebApplication1
                         }
                     }
                 }
-                TempData["test"] = "I am come from form.";
                 return RedirectToPage("form");
             }
             return Page();
